@@ -1,11 +1,9 @@
 import React from 'react'
-import { 
-    Text 
-} from 'native-base'
+import LoginScreen from './Auth/LoginScreen'
 
 const HomeScreen = () => {
     return (
-        
+        <LoginScreen></LoginScreen>
     )
 }
 

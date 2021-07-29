@@ -10,9 +10,7 @@ import HomeScreen from './app/screens/HomeScreen'
 const App = () => {
   return (
     <NativeBaseProvider>
-      <Box safeArea>
-        <HomeScreen></HomeScreen>
-      </Box>
+      <HomeScreen></HomeScreen>
     </NativeBaseProvider>
   )
 }
