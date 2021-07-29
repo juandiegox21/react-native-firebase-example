@@ -1,21 +1,18 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+
+import { 
+  NativeBaseProvider,
+  Box
+} from 'native-base'
+
+import HomeScreen from './app/screens/HomeScreen'
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Test</Text>
-    </View>
+    <NativeBaseProvider>
+      <HomeScreen></HomeScreen>
+    </NativeBaseProvider>
   )
 }
 
 export default App
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
