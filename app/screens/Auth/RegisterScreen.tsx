@@ -16,16 +16,22 @@ import {
 
 import firebase from "firebase";
 
-const LoginScreen = () => {
+const RegisterScreen = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const login = async () => {
-    const result = await firebase
+  const signUp = async () => {
+    const { user } = await firebase
       .auth()
-      .signInWithEmailAndPassword(email, password);
+      .createUserWithEmailAndPassword(email, password);
 
-    console.log(result);
+    if (user) {
+      await firebase.firestore().collection("users").doc(user.uid).set({
+        name,
+        email,
+      });
+    }
   };
 
   return (
@@ -35,7 +41,7 @@ const LoginScreen = () => {
       </Heading>
 
       <Heading color="muted.400" size="xs">
-        Sign in to continue!
+        Sign up to continue!
       </Heading>
 
       <VStack space={2} mt={5}>
@@ -43,38 +49,41 @@ const LoginScreen = () => {
           <FormControl.Label
             _text={{ color: "muted.700", fontSize: "sm", fontWeight: 600 }}
           >
-            Email ID
+            Name
+          </FormControl.Label>
+          <Input value={name} onChangeText={(name) => setName(name)} />
+        </FormControl>
+
+        <FormControl>
+          <FormControl.Label
+            _text={{ color: "muted.700", fontSize: "sm", fontWeight: 600 }}
+          >
+            Email
           </FormControl.Label>
           <Input value={email} onChangeText={(email) => setEmail(email)} />
         </FormControl>
-
-        <FormControl mb={5}>
+        <FormControl>
           <FormControl.Label
             _text={{ color: "muted.700", fontSize: "sm", fontWeight: 600 }}
           >
             Password
           </FormControl.Label>
-
           <Input
-            type="password"
             value={password}
             onChangeText={(password) => setPassword(password)}
+            type="password"
           />
-          <Link
-            _text={{ fontSize: "xs", fontWeight: "700", color: "cyan.500" }}
-            alignSelf="flex-end"
-            mt={1}
-          >
-            Forgot Password?
-          </Link>
         </FormControl>
-
-        <VStack space={2}>
-          <Button colorScheme="cyan" _text={{ color: "white" }} onPress={login}>
-            Login
+        <VStack space={2} mt={5}>
+          <Button
+            colorScheme="cyan"
+            _text={{ color: "white" }}
+            onPress={signUp}
+          >
+            SignUp
           </Button>
 
-          <HStack justifyContent="center" alignItems="center">
+          <HStack justifyContent="center">
             <IconButton
               variant="unstyled"
               icon={
@@ -87,21 +96,9 @@ const LoginScreen = () => {
             />
           </HStack>
         </VStack>
-
-        <HStack justifyContent="center">
-          <Text fontSize="sm" color="muted.700" fontWeight={400}>
-            I'm a new user.{" "}
-          </Text>
-          <Link
-            _text={{ color: "cyan.500", bold: true, fontSize: "sm" }}
-            href="#"
-          >
-            Sign Up
-          </Link>
-        </HStack>
       </VStack>
     </Box>
   );
 };
 
-export default LoginScreen;
+export default RegisterScreen;
