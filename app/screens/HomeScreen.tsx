@@ -1,10 +1,21 @@
-import React from 'react'
-import LoginScreen from './Auth/LoginScreen'
+import React from "react";
+import firebase from "firebase";
+import { Box, Text, Button } from "native-base";
 
-const HomeScreen = () => {
-    return (
-        <LoginScreen></LoginScreen>
-    )
-}
+const HomeScreen = (props) => {
+  const logout = async () => {
+    await firebase.auth().signOut();
+  };
 
-export default HomeScreen
+  console.log(props);
+
+  return (
+    <Box safeArea>
+      <Text>Welcome back {props.user.email}</Text>
+
+      <Button onPress={logout}>Sign out</Button>
+    </Box>
+  );
+};
+
+export default HomeScreen;
