@@ -10,7 +10,7 @@ import {
     FIREBASE_STORAGE_BUCKET,
     FIREBASE_MESSAGE_SENDER_ID,
     FIREBASE_ID
-} from 'react-native-dotenv';
+} from '@env';
 
 const firebaseConfig = {
     apiKey: FIREBASE_API_KEY,
@@ -21,7 +21,11 @@ const firebaseConfig = {
     appId: FIREBASE_ID
 };
 
-firebase.initializeApp(firebaseConfig);
+console.log(firebaseConfig);
+
+if (firebase.apps.length === 0) {
+    firebase.initializeApp(firebaseConfig);
+}
 
 // utils
 const db = firebase.firestore()
@@ -30,14 +34,9 @@ const storage = firebase.storage()
 
 const firestore = firebase.firestore
 
-const authProviders = {
-    google: new firebase.auth.GoogleAuthProvider()
-}
-
 export {
     db,
     auth,
     storage,
-    authProviders,
     firestore
 }

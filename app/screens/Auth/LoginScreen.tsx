@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { auth } from '../../constants/firebase';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import {
   Box,
@@ -15,6 +16,15 @@ import {
 } from 'native-base';
 
 const LoginScreen = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    
+    const login = async () => {
+        // Sign user in
+        const { user } = await auth.signInWithEmailAndPassword(email, password);
+        console.log(user);
+    }
+    
     return (
         <Box safeArea>
             <Heading size="lg" color='primary.500'>
@@ -30,7 +40,9 @@ const LoginScreen = () => {
                     <FormControl.Label _text={{color: 'muted.700', fontSize: 'sm', fontWeight: 600}}>
                         Email ID
                     </FormControl.Label>
-                    <Input />
+                    <Input 
+                        value={email} 
+                        onChangeText={(email) => setEmail(email)} />
                 </FormControl>
 
                 <FormControl mb={5}>
@@ -38,7 +50,10 @@ const LoginScreen = () => {
                         Password
                     </FormControl.Label>
 
-                    <Input type="password" />
+                    <Input 
+                        type="password" 
+                        value={password} 
+                        onChangeText={(password) => setPassword(password)} />
                     <Link
                         _text={{ fontSize: 'xs', fontWeight: '700', color:'cyan.500' }}
                         alignSelf="flex-end"
@@ -48,7 +63,7 @@ const LoginScreen = () => {
                 </FormControl>
 
                 <VStack space={2}>
-                    <Button colorScheme="cyan" _text={{color: 'white' }}>
+                    <Button colorScheme="cyan" _text={{color: 'white' }} onPress={login}>
                         Login
                     </Button>
 
