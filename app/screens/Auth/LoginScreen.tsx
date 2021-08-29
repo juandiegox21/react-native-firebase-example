@@ -16,7 +16,7 @@ import {
 
 import firebase from "firebase";
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -94,7 +94,7 @@ const LoginScreen = () => {
           </Text>
           <Link
             _text={{ color: "cyan.500", bold: true, fontSize: "sm" }}
-            href="#"
+            onPress={() => navigation.navigate("Register")}
           >
             Sign Up
           </Link>

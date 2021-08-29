@@ -1,10 +1,7 @@
 import React from "react";
-import { NativeBaseProvider } from "native-base";
-
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-
 import firebase from "firebase";
+
+import { NativeBaseProvider } from "native-base";
 
 import {
   FIREBASE_API_KEY,
@@ -14,6 +11,8 @@ import {
   FIREBASE_MESSAGE_SENDER_ID,
   FIREBASE_ID,
 } from "@env";
+
+import MainStackNavigator from "./app/navigation/MainStackNavigator";
 
 const firebaseConfig = {
   apiKey: FIREBASE_API_KEY,
@@ -29,22 +28,10 @@ if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
 
-import LandingScreen from "./app/screens/LandingScreen";
-
-const Stack = createStackNavigator();
-
 const App = () => {
   return (
     <NativeBaseProvider>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Landing">
-          <Stack.Screen
-            name="Landing"
-            component={LandingScreen}
-            options={{ headerShown: false }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <MainStackNavigator />
     </NativeBaseProvider>
   );
 };

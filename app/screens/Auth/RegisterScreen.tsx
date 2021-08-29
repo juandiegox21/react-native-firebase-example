@@ -16,7 +16,7 @@ import {
 
 import firebase from "firebase";
 
-const RegisterScreen = () => {
+const RegisterScreen = ({ navigation }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,6 +31,8 @@ const RegisterScreen = () => {
         name,
         email,
       });
+
+      return navigation.goBack();
     }
   };
 
@@ -80,7 +82,7 @@ const RegisterScreen = () => {
             _text={{ color: "white" }}
             onPress={signUp}
           >
-            SignUp
+            Sign Up
           </Button>
 
           <HStack justifyContent="center">

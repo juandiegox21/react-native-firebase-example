@@ -4,7 +4,7 @@ import firebase from "firebase";
 import LoginScreen from "./Auth/LoginScreen";
 import HomeScreen from "./HomeScreen";
 
-const LoginApp = () => {
+const LoginApp = ({ navigation }) => {
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
@@ -24,15 +24,15 @@ const LoginApp = () => {
 
   // User is not logged in
   if (!user) {
-    return <LoginScreen />;
+    return <LoginScreen navigation={navigation} />;
   }
 
   // User is logged in
-  return <HomeScreen user={user} />;
+  return <HomeScreen navigation={navigation} />;
 };
 
-const LandingScreen = () => {
-  return <LoginApp />;
+const LandingScreen = ({ navigation }) => {
+  return <LoginApp navigation={navigation} />;
 };
 
 export default LandingScreen;
