@@ -3,19 +3,18 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import LandingScreen from "../screens/LandingScreen";
+import MainScreen from "../screens/MainScreen";
 import RegisterScreen from "../screens/Auth/RegisterScreen";
-import HomeScreen from "../screens/HomeScreen";
 
 const Stack = createStackNavigator();
 
 const MainStackNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Landing">
+      <Stack.Navigator initialRouteName="Main">
         <Stack.Screen
-          name="Landing"
-          component={LandingScreen}
+          name="Main"
+          component={MainScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen name="Register" component={RegisterScreen} />
