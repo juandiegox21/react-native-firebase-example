@@ -27,10 +27,6 @@ const HomeScreen = ({ navigation }) => {
               color="white"
               size="md"
             />
-
-            <Text color="white" fontSize={14}>
-              Favorites
-            </Text>
           </Center>
         </Pressable>
         <Pressable
@@ -46,10 +42,6 @@ const HomeScreen = ({ navigation }) => {
               color="white"
               size="md"
             />
-
-            <Text color="white" fontSize={14}>
-              News
-            </Text>
           </Center>
         </Pressable>
         <Pressable
@@ -65,9 +57,6 @@ const HomeScreen = ({ navigation }) => {
               color="white"
               size="md"
             />
-            <Text color="white" fontSize={14}>
-              Profile
-            </Text>
           </Center>
         </Pressable>
       </HStack>
