@@ -28,11 +28,13 @@ const LoginApp = ({ navigation }) => {
   }
 
   // User is logged in
-  return <HomeScreen navigation={navigation} />;
+  const homeScreen = <HomeScreen navigation={navigation} />;
+
+  return homeScreen;
 };
 
-const LandingScreen = ({ navigation }) => {
+const MainScreen = ({ navigation }) => {
   return <LoginApp navigation={navigation} />;
 };
 
-export default LandingScreen;
+export default MainScreen;
