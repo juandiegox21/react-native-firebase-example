@@ -1,17 +1,30 @@
 import React, { useState } from "react";
 import firebase from "firebase";
-import { Box, Text, Center, HStack, Icon, Pressable } from "native-base";
+import {
+  Box,
+  Text,
+  Center,
+  HStack,
+  Icon,
+  Pressable,
+  Button,
+} from "native-base";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useAppSelector } from "../hooks";
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = () => {
   const [selected, setSelected] = useState(0);
-
+  const { uid, name, email } = useAppSelector((state) => state.user.data);
   const logout = async () => {
     await firebase.auth().signOut();
   };
 
   return (
     <Box flex={1} bg="white" safeAreaTop>
+      <Text>Uid: {uid}</Text>
+      <Text>Name: {name}</Text>
+      <Text>Email: {email}</Text>
+      <Button onPress={logout}>Logout</Button>
       <Center flex={1}></Center>
       <HStack bg="primary.500" alignItems="center" safeAreaBottom shadow={6}>
         <Pressable

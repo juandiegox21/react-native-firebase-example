@@ -3,15 +3,32 @@ import firebase from "firebase";
 
 import LoginScreen from "./Auth/LoginScreen";
 import HomeScreen from "./HomeScreen";
+import { useAppDispatch } from "../hooks";
+import { setData, User } from "../modules/user/userSlice";
 
-const LoginApp = ({ navigation }) => {
+const LoginApp = () => {
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
+  // User
   const [user, setUser] = useState();
+
+  const dispatch = useAppDispatch();
 
   // Handle user state changes
   const onAuthStateChanged = (user: any) => {
     setUser(user);
+
+    if (user) {
+      const { uid, email } = user;
+
+      const userData: User = {
+        uid,
+        email,
+      };
+
+      dispatch(setData(userData));
+    }
+
     if (initializing) setInitializing(false);
   };
 
@@ -24,17 +41,16 @@ const LoginApp = ({ navigation }) => {
 
   // User is not logged in
   if (!user) {
-    return <LoginScreen navigation={navigation} />;
+    return <LoginScreen />;
   }
 
   // User is logged in
-  const homeScreen = <HomeScreen navigation={navigation} />;
-
+  const homeScreen = <HomeScreen />;
   return homeScreen;
 };
 
-const MainScreen = ({ navigation }) => {
-  return <LoginApp navigation={navigation} />;
+const MainScreen = () => {
+  return <LoginApp />;
 };
 
 export default MainScreen;
