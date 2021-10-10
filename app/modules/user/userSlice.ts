@@ -3,7 +3,6 @@ import { RootState } from "../../store";
 
 type User = {
   uid: string;
-  name?: string;
   email: string;
 };
 

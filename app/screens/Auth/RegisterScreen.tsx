@@ -15,11 +15,13 @@ import {
 } from "native-base";
 
 import firebase from "firebase";
+import { useNavigation } from "@react-navigation/native";
 
-const RegisterScreen = ({ navigation }) => {
-  const [name, setName] = useState("");
+const RegisterScreen = () => {
+  const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigation = useNavigation();
 
   const signUp = async () => {
     const { user } = await firebase
@@ -27,8 +29,12 @@ const RegisterScreen = ({ navigation }) => {
       .createUserWithEmailAndPassword(email, password);
 
     if (user) {
+      await user.updateProfile({
+        displayName: displayName,
+      });
+
       await firebase.firestore().collection("users").doc(user.uid).set({
-        name,
+        displayName,
         email,
       });
 
@@ -53,7 +59,10 @@ const RegisterScreen = ({ navigation }) => {
           >
             Name
           </FormControl.Label>
-          <Input value={name} onChangeText={(name) => setName(name)} />
+          <Input
+            value={displayName}
+            onChangeText={(displayName) => setDisplayName(displayName)}
+          />
         </FormControl>
 
         <FormControl>
