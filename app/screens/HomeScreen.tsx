@@ -1,11 +1,12 @@
 import React from "react";
 import firebase from "firebase";
-import { Box, Text, Button, ScrollView } from "native-base";
+import { Box, Text, Button, ScrollView, Alert, VStack, HStack, IconButton, CloseIcon } from "native-base";
 import { useAppSelector } from "../hooks";
 import BottomNavigation from "../navigation/BottomNavigation";
 
 const HomeScreen = () => {
-  const { uid, email } = useAppSelector((state) => state.user.data);
+  const { email } = useAppSelector((state) => state.user.data);
+
   const logout = async () => {
     await firebase.auth().signOut();
   };
@@ -18,6 +19,25 @@ const HomeScreen = () => {
           mb: "4",
         }}
       >
+        <Alert w="100%" mb="2" status="success">
+          <VStack space={2} flexShrink={1} w="100%">
+            <HStack flexShrink={1} space={2} justifyContent="space-between">
+              <HStack space={2} flexShrink={1}>
+                <Alert.Icon mt="1" />
+                <Text fontSize="md" color="coolGray.800">
+                  Welcome back {email}!
+                </Text>
+              </HStack>
+              <IconButton
+                variant="unstyled"
+                icon={<CloseIcon size="3" color="coolGray.600" />}
+              />
+            </HStack>
+          </VStack>
+        </Alert>
+        
+        <Button onPress={logout}>Log Out</Button>
+
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent in
           tellus egestas, condimentum justo maximus, sollicitudin nunc.
