@@ -1,6 +1,6 @@
 # Example [React Native][rnurl] App With [Firebase][rnfirebaseurl] as the backend
 
-I strongly recommend replacing the current Firebase integration with https://rnfirebase.io/ as it covers issues with draining the users battery. In this example we are using the Web App firebase configuration, this is made possible using [Expo][expourl].
+I strongly recommend replacing the current Firebase integration with https://rnfirebase.io/ as it covers [issues with draining the users battery][issuedrainingbattery]. In this example we are using the Web App firebase configuration, this is made possible using [Expo][expourl].
 
 <div>
     <img src="https://d33wubrfki0l68.cloudfront.net/554c3b0e09cf167f0281fda839a5433f2040b349/ecfc9/img/header_logo.svg" width="50" />
@@ -58,3 +58,4 @@ The session is persisted, if the app is close you will still be logged in (Click
 [expocliurl]: https://docs.expo.dev/get-started/installation/
 [signin]: https://i.imgur.com/EfNWRhs.gif "Log in and Sign out"
 [signup]: https://i.imgur.com/fQoxArz.gif "Sign up and Sign out"
+[issuedrainingbattery]: https://github.com/facebook/react-native/issues/12981
