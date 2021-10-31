@@ -15,18 +15,23 @@ import {
 } from "native-base";
 
 import firebase from "firebase";
+import { useNavigation } from "@react-navigation/native";
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const login = async () => {
-    const result = await firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password);
-
-    console.log(result);
+    try {
+      const result = await firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password);
+    } catch (err) {
+      console.log(err);
+    }
   };
+
+  const navigation = useNavigation();
 
   return (
     <Box safeArea flex={1} p={2} w="90%" mx="auto">
@@ -94,7 +99,7 @@ const LoginScreen = ({ navigation }) => {
           </Text>
           <Link
             _text={{ color: "cyan.500", bold: true, fontSize: "sm" }}
-            onPress={() => navigation.navigate("Register")}
+            onPress={() => navigation.navigate("Sign Up")}
           >
             Sign Up
           </Link>
