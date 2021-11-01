@@ -46,7 +46,7 @@ Signing up
 
 ![alt text][signup]
 
-The session is persisted, if the app is close you will still be logged in (Click on the picture, it will take you to a video)
+The session is persisted, if the app is close you will still be logged in
 
 
 ![alt text][persistedsession]
