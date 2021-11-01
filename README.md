@@ -48,7 +48,8 @@ Signing up
 
 The session is persisted, if the app is close you will still be logged in (Click on the picture, it will take you to a video)
 
-!https://imgur.com/8PSjGpi.gif
+
+![alt text][persistedsession]
 
 <!-- definitions -->
 
@@ -58,4 +59,5 @@ The session is persisted, if the app is close you will still be logged in (Click
 [expocliurl]: https://docs.expo.dev/get-started/installation/
 [signin]: https://i.imgur.com/EfNWRhs.gif "Log in and Sign out"
 [signup]: https://i.imgur.com/fQoxArz.gif "Sign up and Sign out"
+[persistedsession]: https://imgur.com/8PSjGpi.gif "Persisting session"
 [issuedrainingbattery]: https://github.com/facebook/react-native/issues/12981
