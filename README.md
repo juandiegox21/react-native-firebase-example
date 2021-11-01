@@ -48,7 +48,7 @@ Signing up
 
 The session is persisted, if the app is close you will still be logged in (Click on the picture, it will take you to a video)
 
-<a href="https://imgur.com/8PSjGpi.mp4" title="Persisting session"><img src="https://i.imgur.com/ssndh2L.png" alt="Persisting session" /></a>
+!https://imgur.com/8PSjGpi.gif
 
 <!-- definitions -->
 
